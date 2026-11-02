@@ -1,2 +1,2 @@
 {"_id":"dbagentgroup","parent":0,"order":0,"name":"База данных","folder":1}
-{"_id":"sqlite","order":2000,"parent":"dbagentgroup","name":"sqlite","active":1,"alone":1,"alonePath":"C:\\ProgramData\\IntraSCADA\\intrascada\\projects\\LIMS_v2_0\\db","dbPath":"C:\\ProgramData\\IntraSCADA\\intrascada\\projects\\LIMS_v2_0\\db"}
+{"_id":"sqlite","order":2000,"parent":"dbagentgroup","name":"sqlite","active":1,"alone":0,"alonePath":"","dbPath":"C:\\ProgramData\\IntraSCADA\\intrascada\\projects\\LIMS_v2_0\\db"}
