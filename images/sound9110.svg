@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="10.636" y1="12" x2="17.076" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="8.853" y1="12" x2="13.657" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="6.923" y1="12.004" x2="10.123" y2="12.004">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <g>
+      <path d="M11.489,0 L11.92,0.015 L12.224,0.216 C18.697,6.698 18.697,17.242 12.208,23.731 C11.849,24.09 11.263,24.09 10.905,23.731 C10.547,23.373 10.547,22.787 10.905,22.429 C16.67,16.656 16.678,7.276 10.921,1.519 C10.555,1.161 10.555,0.575 10.921,0.216 C11.261,-0.014 11.072,0.06 11.489,0 z" fill="url(#Gradient_1)"/>
+      <path d="M9.698,3.965 L10.128,3.98 L10.433,4.182 C12.509,6.258 13.657,9.026 13.657,11.957 C13.657,14.913 12.509,17.682 10.424,19.766 C10.066,20.124 9.48,20.124 9.122,19.766 C8.763,19.408 8.763,18.822 9.122,18.463 C10.856,16.729 11.809,14.417 11.809,11.957 C11.809,9.515 10.856,7.211 9.13,5.484 C8.772,5.126 8.772,4.54 9.13,4.182 C9.469,3.951 9.281,4.026 9.698,3.965 z" fill="url(#Gradient_2)"/>
+      <path d="M7.768,7.833 L8.199,7.848 L8.503,8.049 C9.553,9.1 10.123,10.492 10.123,11.974 C10.123,13.464 9.545,14.856 8.495,15.907 C8.136,16.265 7.55,16.265 7.192,15.907 C6.834,15.54 6.834,14.962 7.192,14.596 C7.892,13.904 8.275,12.967 8.275,11.974 C8.283,10.981 7.892,10.052 7.2,9.352 C6.834,8.994 6.834,8.408 7.2,8.049 C7.54,7.819 7.351,7.893 7.768,7.833 z" fill="url(#Gradient_3)"/>
+    </g>
+  </g>
+</svg>

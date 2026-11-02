@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="0" y1="12" x2="23.999" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="4.965" y1="7.287" x2="19.035" y2="7.287">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="4.965" y1="12" x2="19.035" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <g>
+      <path d="M19.792,0.487 L4.208,0.487 C1.888,0.487 0,2.374 0,4.695 L0,14.307 C0,16.627 1.888,18.515 4.208,18.515 L14.134,18.515 L18.886,23.267 C19.047,23.428 19.262,23.513 19.481,23.513 C19.59,23.513 19.699,23.492 19.803,23.449 C20.118,23.319 20.323,23.012 20.323,22.672 L20.323,18.482 C22.394,18.22 24,16.448 24,14.307 L24,4.695 C24,2.374 22.112,0.487 19.792,0.487 z M22.317,14.307 C22.317,15.699 21.184,16.832 19.792,16.832 L19.481,16.832 C19.016,16.832 18.64,17.209 18.64,17.673 L18.64,20.64 L15.078,17.078 C14.92,16.92 14.706,16.832 14.483,16.832 L4.208,16.832 C2.816,16.832 1.683,15.699 1.683,14.307 L1.683,4.695 C1.683,3.303 2.816,2.17 4.208,2.17 L19.792,2.17 C21.184,2.17 22.317,3.303 22.317,4.695 L22.317,14.307 z" fill="url(#Gradient_1)"/>
+      <path d="M18.194,6.446 L5.806,6.446 C5.341,6.446 4.965,6.823 4.965,7.287 C4.965,7.752 5.341,8.129 5.806,8.129 L18.194,8.129 C18.659,8.129 19.035,7.752 19.035,7.287 C19.035,6.823 18.659,6.446 18.194,6.446 z" fill="url(#Gradient_2)"/>
+      <path d="M18.194,11.159 L5.806,11.159 C5.341,11.159 4.965,11.535 4.965,12 C4.965,12.465 5.341,12.842 5.806,12.842 L18.194,12.842 C18.659,12.842 19.035,12.465 19.035,12 C19.035,11.535 18.659,11.159 18.194,11.159 z" fill="url(#Gradient_3)"/>
+    </g>
+  </g>
+</svg>

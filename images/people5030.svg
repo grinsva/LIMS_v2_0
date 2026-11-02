@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="-18.132" y1="-15.9" x2="-5.868" y2="-15.9" gradientTransform="matrix(-1, -0, 0, -1, 0, 0)">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="6" y1="9.4" x2="9.6" y2="9.4">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="14.4" y1="9.4" x2="18" y2="9.4">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_4" gradientUnits="userSpaceOnUse" x1="0" y1="12" x2="23.999" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <g>
+      <path d="M5.868,18 C6.828,15.552 9.204,13.8 12,13.8 C14.796,13.8 17.172,15.552 18.132,18 L5.868,18 z" fill="url(#Gradient_1)"/>
+      <path d="M7.8,7.6 C8.796,7.6 9.6,8.404 9.6,9.4 C9.6,10.396 8.796,11.2 7.8,11.2 C6.804,11.2 6,10.396 6,9.4 C6,8.404 6.804,7.6 7.8,7.6 z" fill="url(#Gradient_2)"/>
+      <path d="M16.2,7.6 C17.196,7.6 18,8.404 18,9.4 C18,10.396 17.196,11.2 16.2,11.2 C15.204,11.2 14.4,10.396 14.4,9.4 C14.4,8.404 15.204,7.6 16.2,7.6 z" fill="url(#Gradient_3)"/>
+      <path d="M11.988,-0 C18.624,0 24,5.376 24,12 C24,18.624 18.624,24 11.988,24 C5.364,24 0,18.624 -0,12 C0,5.376 5.364,0 11.988,-0 z M12,2.4 C6.696,2.4 2.4,6.696 2.4,12 C2.4,17.304 6.696,21.6 12,21.6 C17.304,21.6 21.6,17.304 21.6,12 C21.6,6.696 17.304,2.4 12,2.4 z" fill="url(#Gradient_4)"/>
+    </g>
+  </g>
+</svg>

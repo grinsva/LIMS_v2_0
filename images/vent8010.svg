@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="0" y1="12" x2="23.999" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="0.169" y1="12" x2="23.83" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="-23.831" y1="12" x2="-0.17" y2="12" gradientTransform="matrix(-0, -1, 1, -0, 0, 0)">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_4" gradientUnits="userSpaceOnUse" x1="-7.438" y1="16.392" x2="16.222" y2="16.392" gradientTransform="matrix(0.866, -0.5, 0.5, 0.866, 0, 0)">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_5" gradientUnits="userSpaceOnUse" x1="-28.223" y1="4.392" x2="-4.562" y2="4.392" gradientTransform="matrix(-0.5, -0.866, 0.866, -0.5, 0, 0)">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_6" gradientUnits="userSpaceOnUse" x1="-16.223" y1="16.392" x2="7.438" y2="16.392" gradientTransform="matrix(0.5, -0.866, 0.866, 0.5, 0, 0)">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_7" gradientUnits="userSpaceOnUse" x1="-28.223" y1="-4.392" x2="-4.562" y2="-4.392" gradientTransform="matrix(-0.866, -0.5, 0.5, -0.866, 0, 0)">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_8" gradientUnits="userSpaceOnUse" x1="10.016" y1="12.189" x2="13.984" y2="12.189">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <g>
+      <path d="M12,-0 C18.627,0 24,5.373 24,12 C24,18.627 18.627,24 12,24 C5.373,24 0,18.627 0,12 C0,5.373 5.373,0 12,0 z M12,0.338 C5.559,0.338 0.338,5.559 0.338,12 C0.338,18.441 5.559,23.662 12,23.662 C18.441,23.662 23.662,18.441 23.662,12 C23.662,5.559 18.441,0.338 12,0.338 z" fill="url(#Gradient_1)"/>
+      <path d="M0.169,11.836 L23.831,11.836 L23.831,12.164 L0.169,12.164 L0.169,11.836 z" fill="url(#Gradient_2)"/>
+      <path d="M11.836,23.831 L11.836,0.169 L12.164,0.169 L12.164,23.831 L11.836,23.831 z" fill="url(#Gradient_3)"/>
+      <path d="M1.672,17.773 L22.164,5.942 L22.328,6.227 L1.836,18.058 L1.672,17.773 z" fill="url(#Gradient_4)"/>
+      <path d="M17.773,22.328 L5.942,1.836 L6.227,1.672 L18.058,22.164 L17.773,22.328 z" fill="url(#Gradient_5)"/>
+      <path d="M5.942,22.164 L17.773,1.672 L18.058,1.836 L6.227,22.328 L5.942,22.164 z" fill="url(#Gradient_6)"/>
+      <path d="M22.164,18.058 L1.672,6.227 L1.836,5.942 L22.328,17.773 L22.164,18.058 z" fill="url(#Gradient_7)"/>
+      <path d="M12,14.172 C10.904,14.172 10.016,13.284 10.016,12.188 C10.016,11.093 10.904,10.205 12,10.205 C13.096,10.205 13.984,11.093 13.984,12.188 C13.984,13.284 13.096,14.172 12,14.172 z" fill="url(#Gradient_8)"/>
+    </g>
+  </g>
+</svg>

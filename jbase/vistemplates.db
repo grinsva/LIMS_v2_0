@@ -1,0 +1,44 @@
+{"_id":"vistemplategroup","parent":0,"order":0,"name":"Шаблоны визуализации","folder":1}
+{"_id":"vt022","parent":"vtg006","order":1000,"name":"Часы стрелочные"}
+{"_id":"vt023","parent":"vtg006","order":2000,"name":"Часы цифровые"}
+{"_id":"vt024","parent":"vtg006","order":3000,"name":"Дата","status":0}
+{"_id":"vt025","name":"Светильник","parent":"vtg015","order":1000,"status":0,"__expref":"intra","__exid":"lamp001"}
+{"_id":"vt027","name":"Розетка","parent":"vtg015","order":2000,"status":0,"__expref":"intra","__exid":"socket001"}
+{"_id":"vt028","name":"Радиатор отопления","parent":"vtg020","order":250,"status":0,"__expref":"intra","__exid":"bat001"}
+{"_id":"vt030","name":"Кондиционер","parent":"vtg020","order":500,"status":0,"__expref":"intra","__exid":"ac001"}
+{"_id":"vt035","name":"Заслонка (3)","parent":"vtg016","order":1026,"status":0,"__expref":"intra","__exid":"valvea301"}
+{"_id":"vt036","name":"Насос","parent":"vtg022","order":1000,"status":0,"__expref":"intra","__exid":"pump001"}
+{"_id":"vt037","name":"Датчик движения","parent":"vtg023","order":4000,"status":0,"__expref":"intra","__exid":"dd001"}
+{"_id":"vt038","name":"Датчик дыма","parent":"vtg023","order":6000,"status":0,"__expref":"intra","__exid":"dp001"}
+{"_id":"vt039","name":"Датчик открытия","parent":"vtg023","order":5000,"status":0,"__expref":"intra","__exid":"dg001"}
+{"_id":"vt040","name":"Датчик протечки","parent":"vtg023","order":7000,"status":0,"__expref":"intra","__exid":"dw001"}
+{"_id":"vt041","name":"Датчик температуры","parent":"vtg023","order":1000,"status":0,"__expref":"intra","__exid":"dt001"}
+{"_id":"vt042","name":"Датчик влажности","parent":"vtg023","order":2000,"status":0,"__expref":"intra","__exid":"dh001"}
+{"_id":"vt043","name":"Датчик качества воздуха","parent":"vtg023","order":3000,"status":0,"__expref":"intra","__exid":"voc001"}
+{"_id":"vt044","name":"Цифры","parent":"vtg021","order":1000,"status":0,"__expref":"intra","__exid":"digit001"}
+{"_id":"vt045","name":"Стрелочный индикатор","parent":"vtg006","order":500,"status":0,"__expref":"intra","__exid":"ind001"}
+{"_id":"vt046","name":"Уровень жидкости","parent":"vtg006","order":250,"status":0,"__expref":"intra","__exid":"level001"}
+{"_id":"vt047","name":"Переключатель (4кн.)","parent":"vtg012","order":1000,"status":0,"__expref":"intra","__exid":"sel401"}
+{"_id":"vt048","name":"Переключатель (3кн.)","parent":"vtg012","order":500,"status":0,"__exid":"sel301","__expref":"intra"}
+{"_id":"vt051","name":"Цифры с уставкой","parent":"vtg021","order":2000,"status":0,"__expref":"intra","__exid":"digit002"}
+{"_id":"vt055","name":"Цифры с индикацией HL","parent":"vtg021","order":3000,"status":0,"__expref":"intra","__exid":"digit003","txt":"С индикацией High, Low, HighHigh, LowLow"}
+{"_id":"vt058","name":"Фильтр 2","parent":"vtg016","order":7026,"status":0,"__expref":"intra","__exid":"af001"}
+{"_id":"vt059","name":"Вентилятор SL","parent":"vtg016","order":18,"status":0,"__expref":"intra","__exid":"fanl001"}
+{"_id":"vt062","name":"Вентилятор","parent":"vtg016","order":16,"status":0,"__expref":"intra","__exid":"fan103"}
+{"_id":"vt066","name":"Заслонка","parent":"vtg016","order":24,"status":0,"__expref":"intra","__exid":"fan103"}
+{"_id":"vt067","name":"Тен (Нагрев)","parent":"vtg016","order":2026,"status":0,"__expref":"intra","__exid":"fan103"}
+{"_id":"vt068","name":"Тен (Охлаждение)","parent":"vtg016","order":3026,"status":0,"__expref":"intra","__exid":"fan103"}
+{"_id":"vt070","name":"Фильтр 1","parent":"vtg016","order":5026,"status":0,"__expref":"intra","__exid":"fan103"}
+{"_id":"vt071","name":"Датчик норма/авария","parent":"vtg023","order":8000,"status":0,"__expref":"intra","__exid":"dd001"}
+{"_id":"vt072","name":"Переключатель (2кн.)","parent":"vtg012","order":250,"status":0,"__exid":"sel201","__expref":"intra"}
+{"_id":"vt077","name":"Переключатель (А)","parent":"vtg012","order":125,"status":0,"__exid":"sel201","__expref":"intra"}
+{"_id":"vt078","name":"Стрелочный индикатор 2","parent":"vtg006","order":750,"status":0,"__expref":"intra","__exid":"ind001"}
+{"_id":"vt079","name":"Стрелочный индикатор 3","parent":"vtg006","order":875,"status":0}
+{"_id":"vtg006","parent":"vistemplategroup","order":5100,"folder":1,"name":"Прочее"}
+{"_id":"vtg012","parent":"vistemplategroup","order":4100,"folder":1,"name":"Переключатели"}
+{"_id":"vtg015","parent":"vistemplategroup","order":600,"folder":1,"name":"Электрика"}
+{"_id":"vtg016","parent":"vistemplategroup","order":1100,"folder":1,"name":"Вентиляция"}
+{"_id":"vtg020","parent":"vistemplategroup","order":344,"folder":1,"name":"Климат"}
+{"_id":"vtg021","parent":"vistemplategroup","order":3850,"folder":1,"name":"Цифры"}
+{"_id":"vtg022","parent":"vistemplategroup","order":3600,"folder":1,"name":"Механизмы"}
+{"_id":"vtg023","parent":"vistemplategroup","order":172,"folder":1,"name":"Датчики"}

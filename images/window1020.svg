@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="2.022" y1="12" x2="21.977" y2="12">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M21.978,-0 L21.978,24 L2.022,24 L2.022,-0 L21.978,-0 z M20.55,8.538 L3.45,8.538 L3.45,22.572 L11.286,22.572 L11.286,8.538 L12.714,8.538 L12.714,22.572 L11.286,22.572 L11.286,22.578 L12.714,22.578 L12.714,22.572 L20.55,22.572 L20.55,8.538 z M20.55,1.422 L3.45,1.422 L3.45,7.11 L20.55,7.11 L20.55,1.422 z" fill="url(#Gradient_1)"/>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="11.54" y1="21.426" x2="12.678" y2="21.426">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="15.189" y1="19.412" x2="18.874" y2="19.412">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="5.708" y1="19.273" x2="9.152" y2="19.273">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_4" gradientUnits="userSpaceOnUse" x1="0.759" y1="6.63" x2="23.241" y2="6.63">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <linearGradient id="Gradient_5" gradientUnits="userSpaceOnUse" x1="9.025" y1="15.804" x2="14.975" y2="15.804">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <g>
+      <path d="M12.646,18.853 L12.678,23.993 L11.572,24 L11.54,18.859 L12.646,18.853 z" fill="url(#Gradient_1)"/>
+      <path d="M15.952,17.619 L18.874,20.403 L18.111,21.204 L15.189,18.42 L15.952,17.619 z" fill="url(#Gradient_2)"/>
+      <path d="M9.153,18.263 L6.51,21.045 L5.708,20.284 L8.35,17.501 L9.153,18.263 z" fill="url(#Gradient_3)"/>
+      <path d="M12.871,-0 L12.871,2.156 L14.99,2.156 L14.99,5.713 C18.825,6.827 21.573,9.727 23.242,13.26 L0.758,13.26 C2.343,9.618 5.272,6.98 9.012,5.732 L9.012,2.156 L11.409,2.156 L11.409,-0 L12.871,-0 z" fill="url(#Gradient_4)"/>
+      <path d="M9.025,14.211 C9.025,15.97 10.357,17.397 11.999,17.397 C13.644,17.397 14.975,15.97 14.975,14.211 z" fill="url(#Gradient_5)"/>
+    </g>
+  </g>
+</svg>

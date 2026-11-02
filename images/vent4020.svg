@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="1.263" y1="21.57" x2="22.736" y2="21.57">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <clipPath id="Clip_1">
+      <path d="M22.737,19.14 L22.737,24 L1.263,21.57 L22.737,19.14 z"/>
+    </clipPath>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="1.263" y1="16.758" x2="22.274" y2="16.758">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <clipPath id="Clip_2">
+      <path d="M20.613,11.946 L22.275,16.506 L1.263,21.57 L20.613,11.946 z"/>
+    </clipPath>
+    <linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="1.263" y1="13.737" x2="19.274" y2="13.737">
+      <stop offset="0" stop-color="#F2F2F1"/>
+      <stop offset="1" stop-color="#6C6D6C"/>
+    </linearGradient>
+    <clipPath id="Clip_3">
+      <path d="M16.155,5.904 L19.275,9.63 L1.263,21.57 L16.155,5.904 z"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1">
+    <g>
+      <g clip-path="url(#Clip_1)">
+        <path d="M22.737,19.14 L22.737,24 L1.263,21.57 L22.737,19.14 z" fill="url(#Gradient_1)"/>
+      </g>
+      <g clip-path="url(#Clip_2)">
+        <path d="M20.613,11.946 L22.275,16.506 L1.263,21.57 L20.613,11.946 z" fill="url(#Gradient_2)"/>
+      </g>
+      <g clip-path="url(#Clip_3)">
+        <path d="M16.155,5.904 L19.275,9.63 L1.263,21.57 L16.155,5.904 z" fill="url(#Gradient_3)"/>
+      </g>
+    </g>
+  </g>
+</svg>
