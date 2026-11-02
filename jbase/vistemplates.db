@@ -1,3 +1,6 @@
+{"_id":"user@vt014","name":"user@vt014","parent":"vistemplategroup"}
+{"_id":"user@vt018","name":"user@vt018","parent":"vistemplategroup"}
+{"_id":"user@vt019","name":"user@vt019","parent":"vistemplategroup"}
 {"_id":"vistemplategroup","parent":0,"order":0,"name":"Шаблоны визуализации","folder":1}
 {"_id":"vt022","parent":"vtg006","order":1000,"name":"Часы стрелочные"}
 {"_id":"vt023","parent":"vtg006","order":2000,"name":"Часы цифровые"}

@@ -1,0 +1,528 @@
+{
+  "settings": {
+    "x": { "value": 10 },
+    "y": { "value": 10 },
+    "w": { "value": 841 },
+    "h": { "value": 595 },
+    "scale": { "value": 1 },
+    "grid": { "value": 10 },
+    "devBackgroundColor": { "value": "rgba(0,0,0,0.25)" },
+    "backgroundColor": {
+      "type": "fill",
+      "value": "rgba(255,255,255,1)",
+      "fill": "rgba(255,255,255,1)",
+      "angle": 90,
+      "shape": "circle",
+      "positionX": 50,
+      "positionY": 50,
+      "extent": "closest-side",
+      "palette": [
+        { "offset": "0.00", "color": "#4A90E2", "opacity": 1 },
+        { "offset": "1.00", "color": "#9013FE", "opacity": 1 }
+      ]
+    },
+    "backgroundImage": { "value": "unset" },
+    "overlayColor": {
+      "type": "fill",
+      "value": "transparent",
+      "fill": "transparent",
+      "angle": 90,
+      "shape": "circle",
+      "positionX": 50,
+      "positionY": 50,
+      "extent": "closest-side",
+      "palette": [
+        { "offset": "0.00", "color": "#4A90E2", "opacity": 1 },
+        { "offset": "1.00", "color": "#9013FE", "opacity": 1 }
+      ]
+    },
+    "pageOrientation": { "value": { "id": "Landscape", "title": "$Landscape" } }
+  },
+  "list": ["table_1", "text_1"],
+  "elements": {
+    "table_1": {
+      "columns": [
+        { "name": { "value": "N" }, "varname": { "id": "npp", "title": "npp" }, "id": "1" },
+        { "name": { "value": "Дата, время" }, "varname": { "id": "datetime", "title": "datetime" }, "id": "2" },
+        { "name": { "value": "Сообщение" }, "varname": { "id": "txt", "title": "txt" }, "id": "3" },
+        { "name": { "value": "Устройство" }, "varname": { "id": "device", "title": "device" }, "id": "4" },
+        { "name": { "value": "Локация" }, "varname": { "id": "location", "title": "location" }, "id": "5" }
+      ],
+      "header": {
+        "1": {
+          "width": { "value": 6 },
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 11 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "2": {
+          "width": { "value": 15 },
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 11 },
+          "italics": { "value": false },
+          "bold": { "value": 1 },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "3": {
+          "width": { "value": 44 },
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 12 },
+          "italics": { "value": false },
+          "bold": { "value": 1 },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "4": {
+          "width": { "value": 20 },
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 11 },
+          "italics": { "value": false },
+          "bold": { "value": 1 },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "5": {
+          "width": { "value": 20 },
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 11 },
+          "italics": { "value": false },
+          "bold": { "value": 1 },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        }
+      },
+      "body": {
+        "1": {
+          "align": { "id": "right", "title": "Right" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 11 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "2": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 11 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "3": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 11 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "4": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 10 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        },
+        "5": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 10 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 }
+        }
+      },
+      "footer": {
+        "1": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 14 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 },
+          "fn": { "value": "" }
+        },
+        "2": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 14 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 },
+          "fn": { "value": "" }
+        },
+        "3": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 14 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 },
+          "fn": { "value": "" }
+        },
+        "4": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 14 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 },
+          "fn": { "value": "" }
+        },
+        "5": {
+          "align": { "id": "center", "title": "Center" },
+          "cellPadding": { "value": 4 },
+          "fontSize": { "value": 14 },
+          "italics": { "value": false },
+          "bold": { "value": false },
+          "textColor": { "value": "rgba(0,0,0,1)" },
+          "fillColor": { "value": "transparent" },
+          "lineColor": { "value": "rgba(0,0,0,1)" },
+          "lineWidth": { "value": 1 },
+          "fn": { "value": "" }
+        }
+      },
+      "type": "table",
+      "_label": "table_1",
+      "x": { "value": 10 },
+      "y": { "value": 40 },
+      "w": { "value": 810 },
+      "h": { "value": 110 },
+      "w2": { "value": 810 },
+      "h2": { "value": 110 }
+    },
+    "text_1": {
+      "text": { "value": "Журнал" },
+      "textSize": { "value": 16 },
+      "textBold": { "value": 1 },
+      "textItalic": { "value": 0 },
+      "type": "text",
+      "_label": "text_1",
+      "x": { "value": 11 },
+      "y": { "value": 10 },
+      "w": { "value": 490 },
+      "h": { "value": 20 },
+      "w2": { "value": 11 },
+      "h2": { "value": 20 }
+    }
+  },
+  "templates": {},
+  "selects": { "text_1": true },
+  "selectContainer": null,
+  "selectType": "one",
+  "selectOne": "text_1",
+  "propertyType": "main",
+  "selectPage": "page_1",
+  "pageList": [{ "id": "page_1", "title": "Page 1" }],
+  "pages": {
+    "page_1": {
+      "settings": {
+        "x": { "value": 10 },
+        "y": { "value": 10 },
+        "w": { "value": 841 },
+        "h": { "value": 595 },
+        "scale": { "value": 1 },
+        "grid": { "value": 10 },
+        "devBackgroundColor": { "value": "rgba(0,0,0,0.25)" },
+        "backgroundColor": {
+          "type": "fill",
+          "value": "rgba(255,255,255,1)",
+          "fill": "rgba(255,255,255,1)",
+          "angle": 90,
+          "shape": "circle",
+          "positionX": 50,
+          "positionY": 50,
+          "extent": "closest-side",
+          "palette": [
+            { "offset": "0.00", "color": "#4A90E2", "opacity": 1 },
+            { "offset": "1.00", "color": "#9013FE", "opacity": 1 }
+          ]
+        },
+        "backgroundImage": { "value": "unset" },
+        "overlayColor": {
+          "type": "fill",
+          "value": "transparent",
+          "fill": "transparent",
+          "angle": 90,
+          "shape": "circle",
+          "positionX": 50,
+          "positionY": 50,
+          "extent": "closest-side",
+          "palette": [
+            { "offset": "0.00", "color": "#4A90E2", "opacity": 1 },
+            { "offset": "1.00", "color": "#9013FE", "opacity": 1 }
+          ]
+        },
+        "pageOrientation": { "value": { "id": "Landscape", "title": "Ландшафт" } }
+      },
+      "list": ["table_1", "text_1"],
+      "elements": {
+        "table_1": {
+          "columns": [
+            { "name": { "value": "N" }, "varname": { "id": "npp", "title": "npp" }, "id": "1" },
+            { "name": { "value": "Дата, время" }, "varname": { "id": "datetime", "title": "datetime" }, "id": "2" },
+            { "name": { "value": "Сообщение" }, "varname": { "id": "txt", "title": "txt" }, "id": "3" },
+            { "name": { "value": "Устройство" }, "varname": { "id": "device", "title": "device" }, "id": "4" },
+            { "name": { "value": "Локация" }, "varname": { "id": "location", "title": "location" }, "id": "5" }
+          ],
+          "header": {
+            "1": {
+              "width": { "value": 6 },
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 11 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "2": {
+              "width": { "value": 15 },
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 11 },
+              "italics": { "value": false },
+              "bold": { "value": 1 },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "3": {
+              "width": { "value": 44 },
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 12 },
+              "italics": { "value": false },
+              "bold": { "value": 1 },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "4": {
+              "width": { "value": 20 },
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 11 },
+              "italics": { "value": false },
+              "bold": { "value": 1 },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "5": {
+              "width": { "value": 20 },
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 11 },
+              "italics": { "value": false },
+              "bold": { "value": 1 },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            }
+          },
+          "body": {
+            "1": {
+              "align": { "id": "right", "title": "Справа" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 11 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "2": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 11 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "3": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 11 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "4": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 10 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            },
+            "5": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 10 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 }
+            }
+          },
+          "footer": {
+            "1": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 14 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 },
+              "fn": { "value": "" }
+            },
+            "2": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 14 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 },
+              "fn": { "value": "" }
+            },
+            "3": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 14 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 },
+              "fn": { "value": "" }
+            },
+            "4": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 14 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 },
+              "fn": { "value": "" }
+            },
+            "5": {
+              "align": { "id": "center", "title": "Center" },
+              "cellPadding": { "value": 4 },
+              "fontSize": { "value": 14 },
+              "italics": { "value": false },
+              "bold": { "value": false },
+              "textColor": { "value": "rgba(0,0,0,1)" },
+              "fillColor": { "value": "transparent" },
+              "lineColor": { "value": "rgba(0,0,0,1)" },
+              "lineWidth": { "value": 1 },
+              "fn": { "value": "" }
+            }
+          },
+          "type": "table",
+          "_label": "table_1",
+          "x": { "value": 10 },
+          "y": { "value": 40 },
+          "w": { "value": 810 },
+          "h": { "value": 110 },
+          "w2": { "value": 810 },
+          "h2": { "value": 110 }
+        },
+        "text_1": {
+          "text": { "value": "Журнал" },
+          "textSize": { "value": 16 },
+          "textBold": { "value": 1 },
+          "textItalic": { "value": 0 },
+          "type": "text",
+          "_label": "text_1",
+          "x": { "value": 11 },
+          "y": { "value": 10 },
+          "w": { "value": 490 },
+          "h": { "value": 20 },
+          "w2": { "value": 11 },
+          "h2": { "value": 20 }
+        }
+      },
+      "templates": {},
+      "selects": { "text_1": true },
+      "selectContainer": null,
+      "selectType": "one",
+      "selectOne": "text_1",
+      "propertyType": "main"
+    }
+  }
+}
