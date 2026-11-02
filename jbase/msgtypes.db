@@ -1,6 +1,0 @@
-{"_id":"msgt00","name":"Стандартное сообщение","critlevel":0,"grp":"Build"}
-{"_id":"msgt01","name":"Предупреждение","critlevel":1,"grp":"Build"}
-{"_id":"msgt02","name":"Авария","critlevel":2,"grp":"Build"}
-{"_id":"msgt07","name":"Системное стандартное сообщение","critlevel":0,"grp":"Sys"}
-{"_id":"msgt08","name":"Системное предупреждение","critlevel":1,"grp":"Sys"}
-{"_id":"msgt09","name":"Системная авария","critlevel":2,"grp":"Sys"}

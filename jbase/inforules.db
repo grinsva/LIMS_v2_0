@@ -1,2 +1,0 @@
-{"_id":"inforulesgroup","parent":0,"order":0,"name":"Правила информирования","folder":1}
-{"_id":"iruleadmin","parent":"inforulesgroup","order":100,"name":"Стандарт"}

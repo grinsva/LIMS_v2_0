@@ -1,2 +1,0 @@
-{"_id":"mainlog","props":{"lev_0":{"level":0,"title":"Стандартное сообщение","days":1},"lev_1":{"level":1,"title":"Предупреждение","days":30},"lev_2":{"level":2,"title":"Авария","days":90}}}
-{"_id":"pluginlog","props":{"lev_0":{"level":0,"title":"Стандартное сообщение","days":1},"lev_1":{"level":1,"title":"Предупреждение","days":30},"lev_2":{"level":2,"title":"Авария","days":90}}}

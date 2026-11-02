@@ -1,0 +1,9 @@
+# Базы данных в папке db
+db/sqliteDb/hist.db-shm
+db/sqliteDb/hist.db-wal
+
+# все .db файлы во всех папках
+*.db
+
+# кроме hist.db
+!hist.db
