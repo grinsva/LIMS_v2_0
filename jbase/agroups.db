@@ -1,0 +1,2 @@
+{"_id":"admgrp","parent":"agroupsgroup","name":"Администраторы","all_layouts":1,"all_dialogs":0,"all_devctl":1,"all_glctl":1,"all_pmparts":2,"layouts":{},"devctl":{},"pmparts":{}}
+{"_id":"agroupsgroup","parent":0,"order":0,"name":"All ","folder":1}

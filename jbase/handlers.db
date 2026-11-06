@@ -1,0 +1,9 @@
+{"parent":"fng004","order":1000,"_id":"fun003","name":"Состояние бинарного беспроводного датчика","type":"calculate"}
+{"parent":"fng002","order":1000,"_id":"fun004","name":"Не принимать значение вне диапазона","type":"read"}
+{"parent":"fng004","order":2000,"_id":"fun005","name":"Состояние строковое - авария в процентах от границ основного значения","type":"calculate"}
+{"parent":"fng002","order":2000,"_id":"fun006","name":"Принимать любые числовые значения","type":"read"}
+{"parent":"fng004","order":500,"_id":"fun008","name":"Флаг поступления данных","type":"calculate"}
+{"parent":"fng005","order":500,"_id":"fun009","name":"Импульс ON","type":"command"}
+{"parent":"fng005","order":1000,"_id":"fun010","name":"Импульс OFF","type":"command"}
+{"parent":"fng004","order":250,"_id":"fun036","name":"Состояние актуатора по value","type":"calculate"}
+{"parent":"fng004","order":3000,"_id":"fun22","name":"Состояние методом интервалов","type":"calculate"}

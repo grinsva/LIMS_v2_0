@@ -2,8 +2,6 @@
 db/sqliteDb/hist.db-shm
 db/sqliteDb/hist.db-wal
 
-# все .db файлы во всех папках
-*.db
-
-# кроме hist.db
-!hist.db
+# временные файлы базы данных с расширением
+*.db-shm
+*.db-wal
