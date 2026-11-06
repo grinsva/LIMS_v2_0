@@ -1,6 +1,8 @@
 # Базы данных в папке db
 db/sqliteDb/hist.db-shm
 db/sqliteDb/hist.db-wal
+logdb/log.db-wal
+logdb/log.db-shm
 
 # временные файлы базы данных с расширением
 *.db-shm
