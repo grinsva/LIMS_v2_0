@@ -1,13 +1,13 @@
-# Папка `db` — база данных, её структура и миграции
+# Папка `db/schema` — структура базы, миграции и проверки
 
-Здесь лежит рабочая база IntraSCADA LIMS v2.0 и текстовые файлы, которые делают
-её структуру **видимой в git** и **воспроизводимой**.
+Здесь лежит всё, что касается **структуры** базы и её изменений. Сама база
+(данные) — отдельно, в `db/sqliteDb/hist.db`.
 
 ## Зачем это добавлено
 
 `hist.db` — бинарный файл SQLite, он лежит в git. В диффе от него видна только строка
 `Bin 135168 -> 135168 bytes`, то есть **что именно** изменилось в структуре — не видно.
-После добавления этих файлов любое изменение схемы видно текстом:
+Эти файлы дают читаемую текстовую историю и возможность собрать структуру с нуля:
 
 ```diff
  CREATE TABLE vk_shipment (
@@ -18,33 +18,42 @@
      ts INTEGER,
 ```
 
-Плюс появилась возможность собрать базу с нуля по текстовым миграциям — на любой
-другой машине/копии проекта, не «руками в SQLiteStudio».
-
 ## Состав папки
+
+```
+db/
+├── sqliteDb/hist.db        ← сама база: данные + структура (бинарник)
+└── schema/                 ← всё про структуру и изменения
+    ├── schema.sql          снимок структуры живой базы (только DDL, без данных)
+    ├── 0001_init.sql       миграция: базовая схема
+    ├── 0002_add_vk_shipment_id_prod_item.sql   миграция: id_prod_item
+    ├── dump-schema.cjs     генератор schema.sql + режим --check
+    ├── verify-migrations.cjs   сверка цепочки миграций с реальной базой
+    ├── README.md           этот файл
+    ├── MIGRATIONS.md       правила работы с миграциями
+    └── DB-WORKFLOW.txt     короткая шпаргалка: что делать, что не делать
+```
 
 | Файл | Что это | Кто меняет |
 |---|---|---|
-| `sqliteDb/hist.db` | сама база (данные + структура) | приложение и люди через SQLiteStudio |
-| `schema.sql` | **снимок структуры** живой базы: таблицы, индексы, триггеры, представления. Без данных | только скрипт `dump-schema.cjs` |
-| `dump-schema.cjs` | генератор `schema.sql` + режим проверки `--check` | вручную, при изменении структуры |
-| `verify-migrations.cjs` | проверка: «миграции собирают ровно ту структуру, что в базе» | запускается, не правится |
-| `migrations/` | нумерованные SQL-файлы изменений структуры | вручную, по одному на изменение |
-| `migrations/0001_init.sql` | базовая схема (замороженный снимок «как было») | не меняется никогда |
-| `migrations/0002_add_vk_shipment_id_prod_item.sql` | добавление `vk_shipment.id_prod_item` | не меняется после применения |
-| `migrations/README.md` | правила работы с миграциями | вручную |
+| `schema.sql` | снимок структуры: таблицы, индексы, триггеры, представления. Без данных | только `dump-schema.cjs` |
+| `NNNN_*.sql` | миграции — по одной на изменение структуры, выполняются по порядку имени | вручную, новые файлы |
+| `dump-schema.cjs` | пересобирает `schema.sql`, `--check` — сверка с базой | не правится при обычной работе |
+| `verify-migrations.cjs` | собирает структуру из миграций в памяти и сравнивает с базой | не правится |
+| `README.md`, `MIGRATIONS.md`, `DB-WORKFLOW.txt` | документация | вручную |
+
+Важно: миграции отбираются по шаблону `NNNN_имя.sql` (4 цифры и подчёркивание),
+поэтому `schema.sql`, документация и скрипты в цепочку миграций не попадают.
 
 Требования: **Node.js >= 22.5** (встроенный модуль `node:sqlite`). Внешних
 зависимостей, `npm install` и `package.json` не нужно.
 
-## Быстрый старт (3 команды)
-
-Выполнять из корня проекта:
+## Быстрый старт (3 команды из корня проекта)
 
 ```powershell
-node db/dump-schema.cjs        # пересобрать db/schema.sql из живой базы
-node db/verify-migrations.cjs  # проверить, что миграции = реальная структура
-node db/dump-schema.cjs --check # проверить, что schema.sql не устарел (код 1 = устарел)
+node db/schema/dump-schema.cjs        # пересобрать schema.sql из живой базы
+node db/schema/verify-migrations.cjs  # миграции = реальная структура?
+node db/schema/dump-schema.cjs --check # schema.sql не устарел? (код 1 = устарел)
 ```
 
 Обе проверки возвращают код `0` при успехе и `1` при расхождении — их можно
@@ -69,7 +78,7 @@ node db/dump-schema.cjs --check # проверить, что schema.sql не у�
 ### `verify-migrations.cjs`
 
 1. Создаёт пустую базу в памяти.
-2. Выполняет в ней все `db/migrations/*.sql` в порядке имён файлов.
+2. Выполняет в ней все `db/schema/NNNN_*.sql` в порядке имён файлов.
 3. Сравнивает получившуюся структуру с реальной базой `db/sqliteDb/hist.db`
    (или с базой, переданной аргументом).
 
@@ -79,10 +88,10 @@ node db/dump-schema.cjs --check # проверить, что schema.sql не у�
 ## Рабочий цикл при изменении структуры
 
 1. Поменяли структуру (приложение при старте, SQLiteStudio, скрипт).
-2. Написали миграцию `db/migrations/000N_короткое_имя.sql`
-   (шаблон и правила — в `db/migrations/README.md`).
-3. Пересобрали снимок: `node db/dump-schema.cjs`
-4. Проверили цепочку: `node db/verify-migrations.cjs` → должно быть `ok`.
+2. Написали миграцию `db/schema/000N_короткое_имя.sql`
+   (шаблон и правила — в `MIGRATIONS.md`).
+3. Пересобрали снимок: `node db/schema/dump-schema.cjs`
+4. Проверили цепочку: `node db/schema/verify-migrations.cjs` → должно быть `ok`.
 5. Закоммитили вместе: `hist.db`, `schema.sql`, новый файл миграции.
 
 Шаг 4 — главный: он ловит ситуацию «поменял в базе, миграцию забыл».
@@ -98,14 +107,14 @@ Copy-Item hist.db hist.db.bak
 Вариант 1 — через SQLiteStudio CLI (он уже установлен в системе):
 
 ```powershell
-& "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db/migrations/0001_init.sql "D:\path\hist.db"
-& "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db/migrations/0002_add_vk_shipment_id_prod_item.sql "D:\path\hist.db"
+& "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db/schema/0001_init.sql "D:\path\hist.db"
+& "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db/schema/0002_add_vk_shipment_id_prod_item.sql "D:\path\hist.db"
 ```
 
 Вариант 2 — только Node, без внешних утилит:
 
 ```powershell
-node --disable-warning=ExperimentalWarning -e "const {DatabaseSync}=require('node:sqlite'),fs=require('fs');const db=new DatabaseSync(process.argv[1]);db.exec(fs.readFileSync(process.argv[2],'utf8'));db.close()" "D:\path\hist.db" db/migrations/0002_add_vk_shipment_id_prod_item.sql
+node --disable-warning=ExperimentalWarning -e "const {DatabaseSync}=require('node:sqlite'),fs=require('fs');const db=new DatabaseSync(process.argv[1]);db.exec(fs.readFileSync(process.argv[2],'utf8'));db.close()" "D:\path\hist.db" db/schema/0002_add_vk_shipment_id_prod_item.sql
 ```
 
 (`--disable-warning=ExperimentalWarning` — только чтобы не печаталось предупреждение
@@ -114,8 +123,8 @@ node --disable-warning=ExperimentalWarning -e "const {DatabaseSync}=require('nod
 После наката — проверить результат:
 
 ```powershell
-node db/dump-schema.cjs "D:\path\hist.db" -o db\_check.sql   # что получилось
-node db/verify-migrations.cjs "D:\path\hist.db"              # совпадает с цепочкой?
+node db/schema/dump-schema.cjs "D:\path\hist.db" -o db/schema/_check.sql  # что получилось
+node db/schema/verify-migrations.cjs "D:\path\hist.db"                    # совпадает с цепочкой?
 ```
 
 ## Ограничения и предостережения
@@ -126,7 +135,7 @@ node db/verify-migrations.cjs "D:\path\hist.db"              # совпадае�
   Учёт применённого пока ведётся «по совести» — таблицы-реестра нет (см. ниже).
 - **Данные в `schema.sql` не попадают.** Только структура. Справочные строки
   (`id=0` «не задано» в `vk_prod_item`, `vk_shipment`, `vk_vid_probi` и т.п.)
-  переносятся отдельно: дампом с `--data`/вручную.
+  переносятся отдельно: дампом или вручную.
 - **База повреждена.** `records`, `timeline`, `customtable` отдают
   `database disk image is malformed` (проблема была до внедрения миграций).
   На `dump-schema.cjs` это не влияет: он читает только каталог `sqlite_master`,
@@ -139,7 +148,7 @@ node db/verify-migrations.cjs "D:\path\hist.db"              # совпадае�
   могут получить `database is locked`; чтение при этом работает.
 - **`node:sqlite` — experimental.** Скрипты глушат предупреждение
   `ExperimentalWarning` сами. Если Node старше 22.5 — модуля нет, скрипты не запустятся.
-- **Кодировка.** `schema.sql` в UTF-8, переводы строк LF (git сам нормализует CRLF).
+- **Кодировка.** Файлы в UTF-8, переводы строк LF (git сам нормализует CRLF).
   `--check` к переводам строк устойчив.
 
 ## Что сознательно оставлено за рамками
@@ -158,6 +167,5 @@ node db/verify-migrations.cjs "D:\path\hist.db"              # совпадае�
 
 - **0002** (16.11.2026) — `vk_shipment.id_prod_item`: FK на `vk_prod_item(id)`,
   `DEFAULT (0)`, `ON DELETE SET DEFAULT ON UPDATE CASCADE`; триггер
-  `trg_vk_shipment_dtlu` дополнен этим столбцом. Применена к живой базе
-  `C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0\db\sqliteDb\hist.db`
-  и к базе в worktree. Резервные копии до правки — в `%TEMP%\opencode\`.
+  `trg_vk_shipment_dtlu` дополнен этим столбцом.
+- **0001** (16.11.2026) — базовая схема, снимок структуры до изменения.

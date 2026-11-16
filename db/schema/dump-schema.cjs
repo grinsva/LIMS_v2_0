@@ -2,7 +2,7 @@
 "use strict";
 
 /**
- * db/dump-schema.cjs
+ * db/schema/dump-schema.cjs
  *
  * Выгружает структуру SQLite-базы (только DDL: таблицы, индексы, триггеры,
  * представления) в текстовый файл. Данные НЕ выгружаются.
@@ -11,9 +11,9 @@
  * schema.sql даёт читаемый дифф при любом изменении структуры.
  *
  * Использование:
- *   node db/dump-schema.cjs                -> пишет db/schema.sql
- *   node db/dump-schema.cjs --check        -> сравнивает db/schema.sql с базой, код 1 при расхождении
- *   node db/dump-schema.cjs <путь к .db> -o <куда писать>
+ *   node db/schema/dump-schema.cjs                -> пишет db/schema/schema.sql
+ *   node db/schema/dump-schema.cjs --check        -> сравнивает schema.sql с базой, код 1 при расхождении
+ *   node db/schema/dump-schema.cjs <путь к .db> -o <куда писать>
  *
  * Требования: Node.js >= 22.5 (встроенный модуль node:sqlite). Внешних зависимостей нет.
  */
@@ -32,9 +32,9 @@ process.emitWarning = function (warning, ...rest) {
 const { DatabaseSync } = require("node:sqlite");
 process.emitWarning = _emitWarning;
 
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = path.resolve(__dirname, "..", "..");
 const DEFAULT_DB = path.join(ROOT, "db", "sqliteDb", "hist.db");
-const DEFAULT_OUT = path.join(ROOT, "db", "schema.sql");
+const DEFAULT_OUT = path.join(__dirname, "schema.sql");
 
 // Порядок секций в выходном файле. Внутри секции объекты сортируются по имени,
 // чтобы диффы были стабильными независимо от истории правок базы.
@@ -56,11 +56,11 @@ const SELECT_OBJECTS = `
 `;
 
 function usage() {
-  console.log(`Использование: node db/dump-schema.cjs [база.db] [-o файл.sql] [--check]
+  console.log(`Использование: node db/schema/dump-schema.cjs [база.db] [-o файл.sql] [--check]
 
   база.db        путь к SQLite-базе (по умолчанию db/sqliteDb/hist.db)
-  -o, --out      куда писать (по умолчанию db/schema.sql)
-  --check        не писать, а сравнить db/schema.sql с текущей базой
+  -o, --out      куда писать (по умолчанию db/schema/schema.sql)
+  --check        не писать, а сравнить schema.sql с текущей базой
   -h, --help     эта справка`);
 }
 
@@ -136,11 +136,11 @@ function render(objects, sourceLabel) {
   out.push("-- schema.sql — структура базы данных (только DDL, без данных)");
   out.push("--");
   out.push("-- Источник  : " + sourceLabel);
-  out.push("-- Генератор : node db/dump-schema.cjs");
-  out.push("-- Проверка  : node db/dump-schema.cjs --check");
+  out.push("-- Генератор : node db/schema/dump-schema.cjs");
+  out.push("-- Проверка  : node db/schema/dump-schema.cjs --check");
   out.push("--");
   out.push("-- Файл пересобирается скриптом. Руками не править: правка потеряется.");
-  out.push("-- Подробности: db/README.md");
+  out.push("-- Подробности: db/schema/README.md");
   out.push("-- ==========================================================================");
 
   for (const [type, title] of SECTIONS) {
@@ -165,12 +165,12 @@ function reportDiff(expected, actual) {
   const onlyFile = [...a.keys()].filter((k) => !e.has(k));
   const changed = [...e.keys()].filter((k) => a.has(k) && a.get(k) !== e.get(k));
 
-  console.error("Расхождение схемы: db/schema.sql устарел.");
+  console.error("Расхождение схемы: db/schema/schema.sql устарел.");
   for (const k of onlyDb) console.error("  только в базе, нет в файле : " + k);
   for (const k of onlyFile) console.error("  только в файле, нет в базе : " + k);
   for (const k of changed) console.error("  изменено                   : " + k);
   console.error("");
-  console.error("Пересоберите файл: node db/dump-schema.cjs");
+  console.error("Пересоберите файл: node db/schema/dump-schema.cjs");
 }
 
 function main() {
@@ -210,7 +210,7 @@ function main() {
 
   if (!fs.existsSync(opts.outPath)) {
     console.error("Файл не найден: " + opts.outPath);
-    console.error("Создайте его: node db/dump-schema.cjs");
+    console.error("Создайте его: node db/schema/dump-schema.cjs");
     process.exit(1);
   }
 

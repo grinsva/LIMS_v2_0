@@ -1,12 +1,15 @@
 -- ==========================================================================
--- schema.sql — структура базы данных (только DDL, без данных)
+-- 0001_init.sql — базовая схема LIMS_v2.0 (точка отсчёта миграций)
 --
--- Источник  : db/sqliteDb/hist.db
--- Генератор : node db/dump-schema.cjs
--- Проверка  : node db/dump-schema.cjs --check
+-- Снимок структуры реальной базы db/sqliteDb/hist.db ДО миграции 0002,
+-- снятый генератором db/schema/dump-schema.cjs с резервной копии.
 --
--- Файл пересобирается скриптом. Руками не править: правка потеряется.
--- Подробности: db/README.md
+-- Применять ПЕРВЫМ, к пустой базе. Данных не содержит — только DDL:
+-- таблицы, индексы, триггеры. Справочные строки (например "не задано" с id=0)
+-- в файл не входят, их надо переносить отдельно (см. db/schema/README.md).
+--
+-- Файл заморожен: после применения он не перегенерируется. Все изменения
+-- структуры оформляются новыми файлами 0002, 0003 и т.д.
 -- ==========================================================================
 
 -- ***** ТАБЛИЦЫ (20) *****
@@ -78,22 +81,7 @@ CREATE TABLE vk_product (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEX
 CREATE TABLE vk_provider (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL ON CONFLICT FAIL, full_name TEXT, id_product INTEGER REFERENCES vk_product (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0), id_prod_item INTEGER REFERENCES vk_prod_item (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0), user TEXT DEFAULT System, ts INTEGER, dtc TEXT DEFAULT (datetime('now', 'localtime')), dtlu TEXT);
 
 -- table: vk_shipment
-CREATE TABLE vk_shipment (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    number TEXT,
-    mass TEXT,
-    ts_in INTEGER,
-    id_part TEXT,
-    id_auto INTEGER REFERENCES vk_auto (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0),
-    id_provider INTEGER REFERENCES vk_provider (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0),
-    id_doc_kachest INTEGER REFERENCES vk_doc_kachest (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0),
-    id_aw INTEGER REFERENCES auto_weigths (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0),
-    id_prod_item INTEGER REFERENCES vk_prod_item (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0),
-    ts INTEGER,
-    dtc TEXT DEFAULT (datetime('now', 'localtime')),
-    dtlu TEXT,
-    user TEXT DEFAULT ('System')
-);
+CREATE TABLE vk_shipment (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, number TEXT, mass TEXT, ts_in INTEGER, id_part TEXT, id_auto INTEGER REFERENCES vk_auto (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0), id_provider INTEGER REFERENCES vk_provider (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0), id_doc_kachest INTEGER REFERENCES vk_doc_kachest (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0), id_aw INTEGER REFERENCES auto_weigths (id) ON DELETE SET DEFAULT ON UPDATE CASCADE DEFAULT (0), ts INTEGER, dtc TEXT DEFAULT (datetime('now', 'localtime')), dtlu TEXT, user TEXT DEFAULT ('System'));
 
 -- table: vk_vid_probi
 CREATE TABLE vk_vid_probi (
@@ -141,4 +129,4 @@ CREATE TRIGGER trg_vk_prod_item_dtlu AFTER UPDATE OF name, id_product, bsu_id, b
 CREATE TRIGGER trg_vk_provider_dtlu AFTER UPDATE OF name, full_name, id_product, id_prod_item ON vk_provider FOR EACH ROW WHEN OLD.name IS NOT NEW.name OR OLD.full_name IS NOT NEW.full_name OR OLD.id_product IS NOT NEW.id_product OR OLD.id_prod_item IS NOT NEW.id_prod_item BEGIN UPDATE vk_provider SET dtlu = datetime('now', 'localtime') WHERE id = NEW.id; END;
 
 -- trigger: trg_vk_shipment_dtlu
-CREATE TRIGGER trg_vk_shipment_dtlu AFTER UPDATE OF number, mass, ts_in, id_part, id_auto, id_provider, id_doc_kachest, id_aw, id_prod_item ON vk_shipment FOR EACH ROW WHEN OLD.number IS NOT NEW.number OR OLD.mass IS NOT NEW.mass OR OLD.ts_in IS NOT NEW.ts_in OR OLD.id_part IS NOT NEW.id_part OR OLD.id_auto IS NOT NEW.id_auto OR OLD.id_provider IS NOT NEW.id_provider OR OLD.id_doc_kachest IS NOT NEW.id_doc_kachest OR OLD.id_aw IS NOT NEW.id_aw OR OLD.id_prod_item IS NOT NEW.id_prod_item BEGIN UPDATE vk_shipment SET dtlu = datetime('now', 'localtime') WHERE id = NEW.id; END;
+CREATE TRIGGER trg_vk_shipment_dtlu AFTER UPDATE OF number, mass, ts_in, id_part, id_auto, id_provider, id_doc_kachest ON vk_shipment FOR EACH ROW WHEN OLD.number IS NOT NEW.number OR OLD.mass IS NOT NEW.mass OR OLD.ts_in IS NOT NEW.ts_in OR OLD.id_part IS NOT NEW.id_part OR OLD.id_auto IS NOT NEW.id_auto OR OLD.id_provider IS NOT NEW.id_provider OR OLD.id_doc_kachest IS NOT NEW.id_doc_kachest BEGIN UPDATE vk_shipment SET dtlu = datetime('now', 'localtime') WHERE id = NEW.id; END;

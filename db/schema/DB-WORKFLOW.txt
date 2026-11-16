@@ -1,7 +1,8 @@
 КАК РАБОТАЕТ ВСЁ, ЧТО ДОБАВЛЕНО ПО БАЗЕ ДАННЫХ
 ==============================================
 
-Папка: C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0\db
+Папка: C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0\db\schema
+(сама база лежит рядом: db\sqliteDb\hist.db)
 Дата: 16.11.2026
 
 
@@ -22,7 +23,7 @@
 
 ЧТО ИМЕННО ДОБАВЛЕНО И ЧТО ОНО ДЕЛАЕТ
 -------------------------------------
-db\schema.sql
+db\schema\schema.sql
   Текстовый снимок структуры живой базы: таблицы, индексы, триггеры,
   представления. Только структура, без данных.
   Зачем: hist.db — бинарный файл, git показывает от него только
@@ -30,29 +31,29 @@ db\schema.sql
   текстом, в том числе в VS Code.
   Приложение этот файл НЕ читает и НЕ использует. Это документация/история.
 
-db\dump-schema.cjs
+db\schema\dump-schema.cjs
   Скрипт-генератор для schema.sql.
-  node db\dump-schema.cjs          -> пересобрать schema.sql из живой базы
-  node db\dump-schema.cjs --check  -> проверить, не устарел ли schema.sql
-                                      (0 = всё совпадает, 1 = расхождение)
+  node db\schema\dump-schema.cjs          -> пересобрать schema.sql из живой базы
+  node db\schema\dump-schema.cjs --check  -> проверить, не устарел ли schema.sql
+                                             (0 = всё совпадает, 1 = расхождение)
   Базу только читает, испортить не может.
 
-db\verify-migrations.cjs
+db\schema\verify-migrations.cjs
   Проверка "миграции = реальная структура".
-  Создаёт пустую базу в памяти, применяет к ней все db\migrations\*.sql по
-  порядку и сравнивает результат с живой базой.
+  Создаёт пустую базу в памяти, применяет к ней все файлы NNNN_*.sql из этой
+  папки по порядку и сравнивает результат с живой базой.
   0 = цепочка миграций собирает ровно то, что в базе; 1 = расхождение.
 
-db\migrations\0001_init.sql
+db\schema\0001_init.sql
   Базовая схема "как было до 16.11.2026". Заморожена, не меняется.
   Нужна как точка отсчёта для сборки базы с нуля.
 
-db\migrations\0002_add_vk_shipment_id_prod_item.sql
+db\schema\0002_add_vk_shipment_id_prod_item.sql
   Сегодняшнее изменение: vk_shipment.id_prod_item (внешний ключ на
   vk_prod_item) + дополненный триггер trg_vk_shipment_dtlu.
   Уже применена к живой базе; файл нужен, чтобы повторить это на другой копии.
 
-db\README.md, db\migrations\README.md
+db\schema\README.md, db\schema\MIGRATIONS.md
   Подробная документация: устройство, правила, шаблоны, ограничения.
 
 
@@ -69,10 +70,10 @@ db\README.md, db\migrations\README.md
 ЧТО ДЕЛАТЬ, КОГДА МЕНЯЕТСЯ СТРУКТУРА БАЗЫ (4 шага)
 --------------------------------------------------
 1. Оформить изменение миграцией: новый файл
-   db\migrations\000N_короткое_имя.sql
-   (правила и шаблон — в db\migrations\README.md).
-2. Пересобрать снимок:      node db\dump-schema.cjs
-3. Проверить цепочку:       node db\verify-migrations.cjs   -> должно быть "ok"
+   db\schema\000N_короткое_имя.sql
+   (правила и шаблон — в db\schema\MIGRATIONS.md).
+2. Пересобрать снимок:      node db\schema\dump-schema.cjs
+3. Проверить цепочку:       node db\schema\verify-migrations.cjs   -> должно быть "ok"
 4. Закоммитить вместе:      hist.db + schema.sql + новый файл миграции
 
 Перед любым изменением живой базы — сделать копию файла базы.
@@ -80,14 +81,14 @@ db\README.md, db\migrations\README.md
 
 ЧТО ДЕЛАТЬ ПЕРИОДИЧЕСКИ
 -----------------------
-Действие                                  Когда                    Время
-----------------------------------------  -----------------------  -----
-node db\dump-schema.cjs --check           раз в неделю/месяц,      5 сек
+Действие                                  Когда                      Время
+----------------------------------------  -------------------------  -----
+node db\schema\dump-schema.cjs --check    раз в неделю/месяц,        5 сек
                                           и после ручных правок
-node db\verify-migrations.cjs             после изменений схемы,   5 сек
+node db\schema\verify-migrations.cjs      после изменений схемы,     5 сек
                                           перед коммитом
-Резервная копия hist.db                   перед правками базы      1 мин
-Накат миграций на другую копию базы       при появлении такой      1 мин
+Резервная копия hist.db                   перед правками базы        1 мин
+Накат миграций на другую копию базы       при появлении такой        1 мин
                                           копии/на новой машине
 
 Обязательных регулярных действий нет. --check полезен как аудит: он ловит
@@ -98,11 +99,11 @@ node db\verify-migrations.cjs             после изменений схем
 -----------------------------------
 dump-schema.cjs --check вернул 1 и пишет "только в базе" / "изменено":
   значит структуру поменяли в базе, а файл не обновили.
-  -> node db\dump-schema.cjs   (пересобрать) и посмотреть дифф в VS Code.
+  -> node db\schema\dump-schema.cjs   (пересобрать) и посмотреть дифф в VS Code.
 
 verify-migrations.cjs вернул 1 и пишет "нет в миграциях":
   значит изменение не оформлено миграцией.
-  -> написать файл db\migrations\000N_*.sql, повторить проверку.
+  -> написать файл db\schema\000N_*.sql, повторить проверку.
 
 Обе проверки возвращают 2 при технической ошибке (нет файла базы, ошибка SQL).
 
@@ -112,10 +113,10 @@ verify-migrations.cjs вернул 1 и пишет "нет в миграциях
 1. Копия файла базы (обязательно).
 2. Применить по порядку, например через CLI SQLiteStudio:
 
-   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\migrations\0001_init.sql "D:\path\hist.db"
-   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\migrations\0002_add_vk_shipment_id_prod_item.sql "D:\path\hist.db"
+   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0001_init.sql "D:\path\hist.db"
+   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0002_add_vk_shipment_id_prod_item.sql "D:\path\hist.db"
 
-3. Проверить: node db\verify-migrations.cjs "D:\path\hist.db"  -> "ok"
+3. Проверить: node db\schema\verify-migrations.cjs "D:\path\hist.db"  -> "ok"
 
 Миграции применяются ОДИН раз и по порядку номеров: в SQLite нет
 "ADD COLUMN IF NOT EXISTS", повторный накат 0002 обнулит id_prod_item.
@@ -152,11 +153,11 @@ verify-migrations.cjs вернул 1 и пишет "нет в миграциях
 
 БЫСТРЫЙ СПРАВОЧНИК
 -------------------
-node db\dump-schema.cjs                        пересобрать db\schema.sql
-node db\dump-schema.cjs --check                проверить актуальность schema.sql
-node db\verify-migrations.cjs                  миграции = живая структура?
-node db\verify-migrations.cjs "путь\к\базе.db" то же для другой базы
-node db\dump-schema.cjs "путь\к\базе.db" -o out.sql   снимок другой базы
+node db\schema\dump-schema.cjs                        пересобрать db\schema\schema.sql
+node db\schema\dump-schema.cjs --check                проверить актуальность schema.sql
+node db\schema\verify-migrations.cjs                  миграции = живая структура?
+node db\schema\verify-migrations.cjs "путь\к\базе.db" то же для другой базы
+node db\schema\dump-schema.cjs "путь\к\базе.db" -o out.sql   снимок другой базы
 
 
 ИТОГ

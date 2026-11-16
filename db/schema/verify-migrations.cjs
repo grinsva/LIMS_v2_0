@@ -2,10 +2,10 @@
 "use strict";
 
 /**
- * db/verify-migrations.cjs
+ * db/schema/verify-migrations.cjs
  *
- * Проверяет, что цепочка миграций db/migrations/*.sql (по порядку имён файлов)
- * действительно собирает структуру, совпадающую с реальной базой.
+ * Проверяет, что цепочка миграций (файлы NNNN_*.sql в этой же папке, по порядку
+ * имён) действительно собирает структуру, совпадающую с реальной базой.
  *
  * Как работает:
  *   1. создаёт пустую базу в памяти (:memory:);
@@ -18,8 +18,8 @@
  * фактической структуре (забыли файл миграции либо правили базу руками).
  *
  * Использование:
- *   node db/verify-migrations.cjs                 -> сверить с db/sqliteDb/hist.db
- *   node db/verify-migrations.cjs <путь к .db>    -> сверить с другой базой
+ *   node db/schema/verify-migrations.cjs              -> сверить с db/sqliteDb/hist.db
+ *   node db/schema/verify-migrations.cjs <путь к .db> -> сверить с другой базой
  *
  * Код возврата: 0 — всё совпадает, 1 — расхождения, 2 — ошибка выполнения.
  * Требования: Node.js >= 22.5 (node:sqlite). Внешних зависимостей нет.
@@ -39,9 +39,12 @@ process.emitWarning = function (warning, ...rest) {
 const { DatabaseSync } = require("node:sqlite");
 process.emitWarning = _emitWarning;
 
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = path.resolve(__dirname, "..", "..");
 const DEFAULT_DB = path.join(ROOT, "db", "sqliteDb", "hist.db");
-const MIGRATIONS_DIR = path.join(ROOT, "db", "migrations");
+// Миграции лежат в этой же папке. Отбираются только файлы вида 0001_имя.sql,
+// поэтому schema.sql, README.md и сами скрипты в цепочку не попадают.
+const MIGRATIONS_DIR = __dirname;
+const MIGRATION_FILE = /^\d{4}_.+\.sql$/i;
 
 const SELECT_OBJECTS = `
   select type, name, sql
@@ -67,7 +70,7 @@ function migrationFiles() {
   if (!fs.existsSync(MIGRATIONS_DIR)) return [];
   return fs
     .readdirSync(MIGRATIONS_DIR)
-    .filter((f) => f.toLowerCase().endsWith(".sql"))
+    .filter((f) => MIGRATION_FILE.test(f))
     .sort();
 }
 
@@ -81,7 +84,7 @@ function main() {
 
   const files = migrationFiles();
   if (files.length === 0) {
-    console.error("В " + MIGRATIONS_DIR + " нет ни одного .sql");
+    console.error("В " + MIGRATIONS_DIR + " нет файлов миграций вида NNNN_*.sql");
     process.exit(2);
   }
 

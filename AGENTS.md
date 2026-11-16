@@ -31,10 +31,10 @@ C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0
 - Правки только через SQL (транзакции), не текстовыми инструментами: `.db` — бинарный формат.
 - Перед изменением живой базы — резервная копия файла базы.
 - Порядок изменения структуры:
-  1. миграция `db/migrations/NNNN_краткое_имя.sql`;
-  2. `node db/dump-schema.cjs` — обновить `db/schema.sql`;
-  3. `node db/verify-migrations.cjs` — должно быть `ok`;
-  4. `node db/dump-schema.cjs --check` — код возврата `0`.
-- Схемные текстовые артефакты (`db/schema.sql`, `db/migrations/*`) коммитятся
+  1. миграция `db/schema/NNNN_краткое_имя.sql`;
+  2. `node db/schema/dump-schema.cjs` — обновить `db/schema/schema.sql`;
+  3. `node db/schema/verify-migrations.cjs` — должно быть `ok`;
+  4. `node db/schema/dump-schema.cjs --check` — код возврата `0`.
+- Схемные текстовые артефакты (`db/schema/schema.sql`, `db/schema/*`) коммитятся
   вместе с изменённой базой.
-- Подробности: `db/README.md` и `db/migrations/README.md`.
+- Подробности: `db/schema/README.md` и `db/schema/MIGRATIONS.md`.
