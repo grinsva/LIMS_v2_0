@@ -1,0 +1,17 @@
+# Единый стиль переводов строк: в репозитории и в рабочей копии — LF.
+# Без этого при core.autocrlf=true файлы получают CRLF при checkout
+# и дают шумные диффы, а .svg-сцены расходятся целиком.
+* text=auto eol=lf
+
+# Бинарные данные: без нормализации переводов строк и без текстового диффа.
+# *.db — базы SQLite: hist.db (db/sqliteDb), log.db (logdb), таблицы jbase.
+*.db binary
+*.db-wal binary
+*.db-shm binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.mdb binary
