@@ -3,7 +3,7 @@
 
 Папка: C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0\db\schema
 (сама база лежит рядом: db\sqliteDb\hist.db)
-Дата: 16.11.2026
+Дата: 17.11.2026
 
 
 КОРОТКИЙ ОТВЕТ НА ГЛАВНЫЙ ВОПРОС
@@ -49,9 +49,31 @@ db\schema\0001_init.sql
   Нужна как точка отсчёта для сборки базы с нуля.
 
 db\schema\0002_add_vk_shipment_id_prod_item.sql
-  Сегодняшнее изменение: vk_shipment.id_prod_item (внешний ключ на
+  Изменение от 16.11.2026: vk_shipment.id_prod_item (внешний ключ на
   vk_prod_item) + дополненный триггер trg_vk_shipment_dtlu.
-  Уже применена к живой базе; файл нужен, чтобы повторить это на другой копии.
+
+db\schema\0003_add_vk_shipment_id_product.sql
+  Изменение от 17.11.2026: vk_shipment.id_product (внешний ключ на
+  vk_product) + дополненный триггер trg_vk_shipment_dtlu.
+
+db\schema\0004_add_isp_tables_and_vk_doc_kachest.sql
+  Догон структуры: справочники испытаний isp_result, isp_stg_status,
+  vk_isp_stages и порядок столбцов vk_doc_kachest (dtc -> dtlu).
+  Это то, что уже было в базе, но не было оформлено миграцией.
+
+db\schema\0005_add_vk_isp.sql
+  Новая таблица vk_isp (результаты/этапы испытаний по заявке).
+
+db\schema\0006_fix_vk_isp_and_isp_status.sql
+  Правка vk_isp: isp_status.id_pk переименован в id, id_status ссылается на
+  isp_status (id), result_isp DEFAULT (0), добавлен триггер trg_vk_isp_dtlu.
+
+db\schema\0007_fix_vk_zvk_status_fk.sql
+  Правка vk_zvk.status: ссылка на zv_status (id_pk) заменена на zv_status (id)
+  — столбца id_pk в справочнике нет, ключ не работал.
+
+Все файлы уже применены к живой базе; файлы нужны, чтобы повторить это
+на другой копии.
 
 db\schema\README.md, db\schema\MIGRATIONS.md
   Подробная документация: устройство, правила, шаблоны, ограничения.
@@ -115,11 +137,21 @@ verify-migrations.cjs вернул 1 и пишет "нет в миграциях
 
    & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0001_init.sql "D:\path\hist.db"
    & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0002_add_vk_shipment_id_prod_item.sql "D:\path\hist.db"
+   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0003_add_vk_shipment_id_product.sql "D:\path\hist.db"
+   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0004_add_isp_tables_and_vk_doc_kachest.sql "D:\path\hist.db"
+   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0005_add_vk_isp.sql "D:\path\hist.db"
+   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0006_fix_vk_isp_and_isp_status.sql "D:\path\hist.db"
+   & "C:\Program Files\SQLiteStudio\sqlitestudiocli.exe" -e db\schema\0007_fix_vk_zvk_status_fk.sql "D:\path\hist.db"
 
 3. Проверить: node db\schema\verify-migrations.cjs "D:\path\hist.db"  -> "ok"
 
 Миграции применяются ОДИН раз и по порядку номеров: в SQLite нет
-"ADD COLUMN IF NOT EXISTS", повторный накат 0002 обнулит id_prod_item.
+"ADD COLUMN IF NOT EXISTS", повторный накат 0002/0003 обнулит id_prod_item
+и id_product, 0004 заново перезапишет справочники испытаний (строки,
+добавленные позже, будут потеряны), 0005 упадёт с "table already exists",
+а 0006 — с "no such column: id_pk" (столбец уже переименован).
+0007 повторно не сломается: DROP/CREATE отработают, данные (если появятся)
+перенесутся как есть — но номер всё равно накатывается один раз.
 
 
 ЧЕГО СОЗНАТЕЛЬНО НЕТ (поэтому автоматики не ждите)

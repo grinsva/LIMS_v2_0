@@ -27,10 +27,16 @@ db/
     ├── schema.sql          снимок структуры живой базы (только DDL, без данных)
     ├── 0001_init.sql       миграция: базовая схема
     ├── 0002_add_vk_shipment_id_prod_item.sql   миграция: id_prod_item
+    ├── 0003_add_vk_shipment_id_product.sql     миграция: id_product
+    ├── 0004_add_isp_tables_and_vk_doc_kachest.sql  миграция: догон структуры
+    ├── 0005_add_vk_isp.sql                        миграция: таблица vk_isp
+    ├── 0006_fix_vk_isp_and_isp_status.sql         миграция: isp_status.id, триггер
+    ├── 0007_fix_vk_zvk_status_fk.sql              миграция: vk_zvk.status
     ├── dump-schema.cjs     генератор schema.sql + режим --check
     ├── verify-migrations.cjs   сверка цепочки миграций с реальной базой
     ├── README.md           этот файл
     ├── MIGRATIONS.md       правила работы с миграциями
+    ├── AGENT-NOTES.md      как агенту работать с базой (инструменты, шаблоны)
     └── DB-WORKFLOW.txt     короткая шпаргалка: что делать, что не делать
 ```
 
@@ -41,6 +47,7 @@ db/
 | `dump-schema.cjs` | пересобирает `schema.sql`, `--check` — сверка с базой | не правится при обычной работе |
 | `verify-migrations.cjs` | собирает структуру из миграций в памяти и сравнивает с базой | не правится |
 | `README.md`, `MIGRATIONS.md`, `DB-WORKFLOW.txt` | документация | вручную |
+| `AGENT-NOTES.md` | памятка агенту: инструменты, шаблоны, разбор ошибок | вручную, по итогам работы |
 
 Важно: миграции отбираются по шаблону `NNNN_имя.sql` (4 цифры и подчёркивание),
 поэтому `schema.sql`, документация и скрипты в цепочку миграций не попадают.
@@ -140,6 +147,11 @@ node db/schema/verify-migrations.cjs "D:\path\hist.db"                    # со
   `database disk image is malformed` (проблема была до внедрения миграций).
   На `dump-schema.cjs` это не влияет: он читает только каталог `sqlite_master`,
   а не данные таблиц. Дамп данных этих таблиц работать не будет.
+- **Системные таблицы в снимок не попадают.** `customtable`, `formulas`,
+  `records`, `strrecords`, `timeline` (и их индексы/триггеры) исключены из
+  `schema.sql` и из сверки `verify-migrations.cjs`: правилами проекта запрещено
+  их читать и включать в отчёты. Список задан константой `PROTECTED_TABLES`
+  в обоих скриптах — менять только вместе с правилами `AGENTS.md`.
 - **Режим WAL.** Приложение держит базу открытой, рядом живут `hist.db-wal` и
   `hist.db-shm` (они в `.gitignore`). Правки могут лежать в `-wal`, а не в самом
   `hist.db`, пока не будет чекпоинт. Если копируете базу файлом — копируйте
@@ -165,6 +177,25 @@ node db/schema/verify-migrations.cjs "D:\path\hist.db"                    # со
 
 ## История изменений
 
+- **0007** (17.11.2026) — `vk_zvk.status`: ссылка `zv_status (id_pk)` заменена на
+  `zv_status (id)` (столбца `id_pk` в справочнике нет). После этого
+  `pragma foreign_key_check` проходит по всей базе без ошибок.
+- **0006** (17.11.2026) — `isp_status.id_pk` переименован в `id`
+  (`ALTER TABLE ... RENAME COLUMN`); `vk_isp` пересобран: `id_status` ссылается
+  на `isp_status (id)`, `result_isp DEFAULT (0)` («нет данных»); добавлен
+  триггер `trg_vk_isp_dtlu`.
+- **0005** (17.11.2026) — новая таблица `vk_isp` (результаты/этапы испытаний):
+  5 внешних ключей — `vk_zvk` (CASCADE), `isp_status` (по `id_pk`!),
+  `vk_isp_stages`, `isp_stg_status`, `isp_result` (SET DEFAULT, `DEFAULT (1)`).
+- **0004** (17.11.2026) — догон структуры до фактического состояния живой базы:
+  справочники `isp_result`, `isp_stg_status`, `vk_isp_stages` (были созданы без
+  миграции) и пересборка `vk_doc_kachest` с порядком столбцов `dtc` → `dtlu`
+  (в `0001` было `dtlu` → `dtc`). Данные справочников и `vk_doc_kachest`
+  сохранены; `verify-migrations.cjs` снова сходится.
+- **0003** (17.11.2026) — `vk_shipment.id_product`: FK на `vk_product(id)`,
+  `DEFAULT (0)`, `ON DELETE SET DEFAULT ON UPDATE CASCADE`, столбец после
+  `id_prod_item`; триггер `trg_vk_shipment_dtlu` дополнен этим столбцом.
+  Таблица пересобрана тем же способом, что в `0002`.
 - **0002** (16.11.2026) — `vk_shipment.id_prod_item`: FK на `vk_prod_item(id)`,
   `DEFAULT (0)`, `ON DELETE SET DEFAULT ON UPDATE CASCADE`; триггер
   `trg_vk_shipment_dtlu` дополнен этим столбцом.

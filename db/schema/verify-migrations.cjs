@@ -46,8 +46,12 @@ const DEFAULT_DB = path.join(ROOT, "db", "sqliteDb", "hist.db");
 const MIGRATIONS_DIR = __dirname;
 const MIGRATION_FILE = /^\d{4}_.+\.sql$/i;
 
+// Системные таблицы, которые запрещено читать и включать в отчёты
+// (AGENTS.md, раздел 2): не сравниваем их структуру с миграциями.
+const PROTECTED_TABLES = new Set(["customtable", "formulas", "records", "strrecords", "timeline"]);
+
 const SELECT_OBJECTS = `
-  select type, name, sql
+  select type, name, tbl_name, sql
     from sqlite_master
    where sql is not null
      and name not like 'sqlite\\_%' escape '\\'
@@ -61,6 +65,9 @@ function cleanSql(sql) {
 function schemaMap(db) {
   const m = new Map();
   for (const r of db.prepare(SELECT_OBJECTS).all()) {
+    // Для таблиц tbl_name совпадает с именем — так отсекаются и сами
+    // защищённые таблицы, и их индексы/триггеры.
+    if (PROTECTED_TABLES.has(String(r.tbl_name))) continue;
     m.set(String(r.type) + ":" + String(r.name), cleanSql(r.sql));
   }
   return m;

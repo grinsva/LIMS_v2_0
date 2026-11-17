@@ -45,15 +45,25 @@ const SECTIONS = [
   ["view", "ПРЕДСТАВЛЕНИЯ"],
 ];
 
+// Системные таблицы, которые запрещено читать и включать в отчёты
+// (AGENTS.md, раздел 2): не выгружаем их DDL и не сравниваем их структуру.
+const PROTECTED_TABLES = new Set(["customtable", "formulas", "records", "strrecords", "timeline"]);
+
 // sqlite_% — служебные объекты самого SQLite (sqlite_sequence, sqlite_stat1...),
 // autoindex-ы имеют sql = NULL и тоже не нужны: они создаются автоматически.
 const SELECT_OBJECTS = `
-  select type, name, sql
+  select type, name, tbl_name, sql
     from sqlite_master
    where sql is not null
      and name not like 'sqlite\\_%' escape '\\'
    order by type, name
 `;
+
+// Для таблиц tbl_name совпадает с именем, поэтому одного условия хватает,
+// чтобы отсечь и сами защищённые таблицы, и их индексы/триггеры.
+function keepObject(tableName) {
+  return !PROTECTED_TABLES.has(String(tableName));
+}
 
 function usage() {
   console.log(`Использование: node db/schema/dump-schema.cjs [база.db] [-o файл.sql] [--check]
@@ -89,11 +99,15 @@ function parseArgs(argv) {
 function schemaObjects(dbPath) {
   const db = new DatabaseSync(dbPath, { readOnly: true });
   try {
-    return db.prepare(SELECT_OBJECTS).all().map((r) => ({
-      type: String(r.type),
-      name: String(r.name),
-      sql: String(r.sql),
-    }));
+    return db
+      .prepare(SELECT_OBJECTS)
+      .all()
+      .filter((r) => keepObject(r.tbl_name))
+      .map((r) => ({
+        type: String(r.type),
+        name: String(r.name),
+        sql: String(r.sql),
+      }));
   } finally {
     db.close();
   }
@@ -106,11 +120,15 @@ function objectsFromSqlText(sqlText) {
   const db = new DatabaseSync(":memory:");
   try {
     db.exec(sqlText);
-    return db.prepare(SELECT_OBJECTS).all().map((r) => ({
-      type: String(r.type),
-      name: String(r.name),
-      sql: String(r.sql),
-    }));
+    return db
+      .prepare(SELECT_OBJECTS)
+      .all()
+      .filter((r) => keepObject(r.tbl_name))
+      .map((r) => ({
+        type: String(r.type),
+        name: String(r.name),
+        sql: String(r.sql),
+      }));
   } finally {
     db.close();
   }
