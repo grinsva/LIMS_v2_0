@@ -111,8 +111,9 @@ C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0
   диалоги, локальные переменные клиента, картинки, кнопки/действия, рантайм
   клиента, файлы `jbase/*.json`, журналы `jbase/*.db`, `images/*` — в скилле
   `intrascada-ui` («IntraScada UI»). Он установлен глобально
-  (`%USERPROFILE%\.config\opencode\skills\intrascada-ui.md`) и работает в любом
-  проекте IntraSCADA; мастер-копия — `docs/skills/intrascada-ui.md`.
+  (`%USERPROFILE%\.config\opencode\skills\intrascada-ui\SKILL.md` со справочниками
+  `references/` и скриптами `scripts/`) и работает в любом проекте IntraSCADA;
+  мастер-копия — `docs/skills/intrascada-ui/`.
 - Перед правкой этих файлов загружать скилл `intrascada-ui`. Без запроса по этой
   области его не читать: подробности не должны попадать в контекст каждой сессии.
 - Проектные детали этой установки — скилл `lims-jbase-ui`
@@ -138,10 +139,11 @@ C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0
   и разбор ошибки с backup() вынесены в db\schema\AGENT-NOTES.md: правила
   должны оставаться короткими и читаться целиком каждую сессию.
 - Знания по интерфейсу `jbase` (JSONL-журналы, схема документов, кнопки и
-  действия, локальные переменные, привязка контейнеров, картинки, проверки)
-  собраны в универсальном скилле intrascada-ui. Он подхватывается по описанию,
-  грузится только при запросе по этой области и работает во всех проектах
-  IntraSCADA, поэтому в AGENTS.md остаётся ссылка.
+  действия, локальные переменные, привязка контейнеров, картинки, проверки,
+  диагностика клиентской сборки) собраны в универсальном скилле IntraScada UI:
+  SKILL.md + справочники references/ + скрипты проверки. Он подхватывается по
+  описанию, грузится только при запросе по этой области и работает во всех
+  проектах IntraSCADA, поэтому в AGENTS.md остаётся ссылка.
 - Детали именно этой установки (конкретные ID, размеры, адреса админки, примеры)
   лежат отдельно в проектном скилле lims-jbase-ui; он скрыт из списка, чтобы не
   дублировать универсальный, и загружается по ID.
@@ -159,9 +161,9 @@ C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0
 - Дополнять можно любыми правилами: команды сборки, конвенции кода, запреты,
   порядок проверок. Чем конкретнее формулировка, тем предсказуемее поведение.
 - Универсальный скилл IntraScada UI лежит вне проекта, в глобальной зоне
-  подхвата (%USERPROFILE%\.config\opencode\skills\intrascada-ui.md), поэтому
+  подхвата (%USERPROFILE%\.config\opencode\skills\intrascada-ui\), поэтому
   действует во всех проектах на этой машине; копия для распространения —
-  docs\skills\intrascada-ui.md.
+  docs\skills\intrascada-ui\ (SKILL.md, references\, scripts\).
 - Проектный скилл lims-jbase-ui лежит в .opencode\skills\lims-jbase-ui\SKILL.md
   и действует только в этом репозитории.
 
@@ -181,10 +183,10 @@ C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0
 ------------------
 - db\schema\AGENT-NOTES.md — как агенту работать с базой: инструменты, шаблоны,
   разбор ошибок, чек-лист (на него ссылается раздел 2 правил).
-- %USERPROFILE%\.config\opencode\skills\intrascada-ui.md — универсальный скилл
-  по интерфейсу jbase для любого проекта IntraSCADA (на него ссылается
-  раздел 4 правил).
-- docs\skills\intrascada-ui.md — мастер-копия универсального скилла в проекте,
+- %USERPROFILE%\.config\opencode\skills\intrascada-ui\SKILL.md — универсальный
+  скилл по интерфейсу jbase для любого проекта IntraSCADA (на него ссылается
+  раздел 4 правил); рядом references\ (9 справочников) и scripts\ (3 скрипта).
+- docs\skills\intrascada-ui\ — мастер-копия универсального скилла в проекте,
   для передачи другим людям и проектам.
 - .opencode\skills\lims-jbase-ui\SKILL.md — проектные детали интерфейса этой
   установки (скрыт из списка, грузится по ID).

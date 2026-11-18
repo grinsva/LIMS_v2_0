@@ -71,8 +71,9 @@ C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0
   диалоги, локальные переменные клиента, картинки, кнопки/действия, рантайм
   клиента, файлы `jbase/*.json`, журналы `jbase/*.db`, `images/*` — в скилле
   `intrascada-ui` («IntraScada UI»). Он установлен глобально
-  (`%USERPROFILE%\.config\opencode\skills\intrascada-ui.md`) и работает в любом
-  проекте IntraSCADA; мастер-копия — `docs/skills/intrascada-ui.md`.
+  (`%USERPROFILE%\.config\opencode\skills\intrascada-ui\SKILL.md` со справочниками
+  `references/` и скриптами `scripts/`) и работает в любом проекте IntraSCADA;
+  мастер-копия — `docs/skills/intrascada-ui/`.
 - Перед правкой этих файлов загружать скилл `intrascada-ui`. Без запроса по этой
   области его не читать: подробности не должны попадать в контекст каждой сессии.
 - Проектные детали этой установки — скилл `lims-jbase-ui`
