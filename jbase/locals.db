@@ -1,1 +1,7 @@
+{"_id":"local002","order":1000,"parent":"localg002","name":"vk_product_id","dn":"vk_product_id","defval":0,"txt":"ID материала / продукта для входного контроля"}
+{"_id":"local003","order":2000,"parent":"localg002","name":"vk_product_name","dn":"vk_product_name","defval":0,"txt":"Наименование материала / продукта для входного контроля"}
+{"_id":"local004","order":3000,"parent":"localg002","name":"vk_prod_item_id","dn":"vk_prod_item_id","defval":0,"txt":"ID позиции продукта для входного контроля"}
+{"_id":"local005","order":4000,"parent":"localg002","name":"vk_prod_item_name","dn":"vk_prod_item_name","defval":0,"txt":"Наименование позиции продукта для входного контроля"}
+{"_id":"local006","order":5000,"parent":"localgroup","name":"main_container","dn":"main_container","defval":"viscont003","txt":"ID контейнера основной области начального экрана"}
+{"_id":"localg002","parent":"localgroup","order":1000,"folder":1,"name":"Входной контроль"}
 {"_id":"localgroup","parent":0,"order":0,"name":"Переменные клиента","folder":1}

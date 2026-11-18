@@ -1,1 +1,2 @@
+{"_id":"layout001","name":"Начальный экран","parent":"layoutgroup","order":1000}
 {"_id":"layoutgroup","parent":0,"order":0,"name":"Экраны","folder":1}

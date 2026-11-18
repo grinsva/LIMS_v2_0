@@ -1,1 +1,5 @@
+{"_id":"viscont001","name":"Строка состояния","parent":"viscontgroup","order":1000}
+{"_id":"viscont002","name":"Боковое меню","parent":"viscontgroup","order":2000}
+{"_id":"viscont003","name":"Основной контейнер","parent":"viscontgroup","order":3000}
+{"_id":"viscont004","name":"ЗАЯВКИ","parent":"viscontgroup","order":4000}
 {"_id":"viscontgroup","parent":0,"order":0,"name":"Контейнеры","folder":1}

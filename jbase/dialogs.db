@@ -1,7 +1,9 @@
-{"_id":"di0012","name":"Журнал устройства","parent":"dialoggroup","order":1100,"status":0,"__expref":"","__exid":""}
-{"_id":"di0017","name":"di0017","parent":"dialoggroup"}
-{"_id":"di0019","name":"Для датчика с блокировкой","parent":"dialoggroup","order":8975,"status":0,"__expref":"","__exid":""}
-{"_id":"di0023","name":"Для актуатора","parent":"dialoggroup","order":8882,"status":0,"__expref":"","__exid":""}
-{"_id":"di0025","parent":"dialoggroup","order":9600,"name":"График"}
-{"_id":"di0027","name":"Для датчика с уставкой","parent":"dialoggroup","order":9350,"status":0,"__expref":"","__exid":""}
+{"_id":"di0012","name":"Журнал устройства","parent":"digroup002","order":63,"status":0,"__expref":"","__exid":""}
+{"_id":"di0017","name":"di0017","parent":"digroup002","order":32}
+{"_id":"di0019","name":"Для датчика с блокировкой","parent":"digroup002","order":250,"status":0,"__expref":"","__exid":""}
+{"_id":"di0023","name":"Для актуатора","parent":"digroup002","order":125,"status":0,"__expref":"","__exid":""}
+{"_id":"di0025","parent":"digroup002","order":1000,"name":"График"}
+{"_id":"di0027","name":"Для датчика с уставкой","parent":"digroup002","order":500,"status":0,"__expref":"","__exid":""}
+{"_id":"di0028","name":"Приветствие","parent":"digroup002","order":16,"status":0,"__expref":"","__exid":""}
 {"_id":"dialoggroup","parent":0,"order":0,"name":"Диалоги","folder":1}
+{"_id":"digroup002","parent":"dialoggroup","order":10600,"folder":1,"name":"Встроенные"}

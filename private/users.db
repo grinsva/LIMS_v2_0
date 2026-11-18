@@ -1,2 +1,0 @@
-{"_id":"admin","login":"admin","name":"Admin","parent":"usergroup","expert":1,"bxpwd":"ZaZExbkGQPJpGP1ch7lnhw==","order":10}
-{"_id":"usergroup","parent":0,"order":0,"name":"Пользователи","folder":1}
