@@ -64,6 +64,23 @@ node scripts/container-preview.js "<путь>\<id>.json" --project "<проек�
 node scripts/list-devices.js --project "<проект>" --folder dg172
 ```
 
+## Официальная документация
+
+Полное руководство: <https://docs.intrascada.com> (691 страница). Целиком его не
+читать. Карта разделов — `references/official-docs.md`, адресный доступ — скрипт:
+
+```bash
+node scripts/docs.js page button              # страница по alias
+node scripts/docs.js page linkWithLocals      # динамическая привязка
+node scripts/docs.js search deviceValue       # поиск по тексту
+node scripts/docs.js tree --filter контейнер  # найти раздел
+```
+
+Перед правкой незнакомого элемента, команды или привязки открывать одну-две
+страницы по теме. Документация авторитетна по поведению продукта, скилл — по
+практике проекта; при расхождении доверять проверке в клиенте и сообщать о нём.
+В отчёте указывать использованный раздел (заголовок и URL).
+
 ## Карта справки
 
 | Вопрос | Файл |
@@ -76,6 +93,7 @@ node scripts/list-devices.js --project "<проект>" --folder dg172
 | Картинки, иконки, `imgColor`, `.ico` | `references/images.md` |
 | Веб-клиент, API, автоклики, поиск по сборке | `references/web-client.md` |
 | Проверки геометрии, привязок и новых сущностей | `references/validation.md` |
+| Официальная документация: карта разделов и адресный доступ | `references/official-docs.md` |
 | Регламент выдачи, ограничения среды | `references/operations.md` |
 
 ## Сценарий: изменить существующий экран

@@ -185,7 +185,8 @@ C:\ProgramData\IntraSCADA\intrascada\projects\LIMS_v2_0
   разбор ошибок, чек-лист (на него ссылается раздел 2 правил).
 - %USERPROFILE%\.config\opencode\skills\intrascada-ui\SKILL.md — универсальный
   скилл по интерфейсу jbase для любого проекта IntraSCADA (на него ссылается
-  раздел 4 правил); рядом references\ (9 справочников) и scripts\ (3 скрипта).
+  раздел 4 правил); рядом references\ (10 справочников) и scripts\ (4 скрипта,
+  включая адресный доступ к официальной документации).
 - docs\skills\intrascada-ui\ — мастер-копия универсального скилла в проекте,
   для передачи другим людям и проектам.
 - .opencode\skills\lims-jbase-ui\SKILL.md — проектные детали интерфейса этой

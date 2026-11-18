@@ -45,11 +45,13 @@ intrascada-ui/
 │   ├── images.md                картинки, иконки, imgColor, .ico
 │   ├── web-client.md            :8088, API, автоклики, админка, поиск по сборке
 │   ├── validation.md            проверки геометрии, привязок, новых сущностей
+│   ├── official-docs.md         карта docs.intrascada.com и адресный доступ
 │   └── operations.md            регламент выдачи и ограничения среды
 └── scripts/
     ├── validate-container.js    проверка контейнера
     ├── container-preview.js     HTML-превью 1:1
-    └── list-devices.js          устройства по папкам
+    ├── list-devices.js          устройства по папкам
+    └── docs.js                  страница официальной документации по alias/id
 ```
 
 ## Что нового в версии 2
@@ -64,6 +66,8 @@ intrascada-ui/
   SVG через `imgColor`, `.ico` с PNG-кадром.
 - Веб-клиент: поиск по актуальной сборке `main.<hash>.chunk.js`, прямые ссылки
   в админку, проверка отдачи картинок по `Content-Type`.
+- Официальная документация: карта разделов + скрипт `docs.js` для адресного
+  чтения одной страницы по alias/id, с локальным кэшем.
 - Проверки: чек-лист новой сущности (файл + запись журнала), таблица привязок,
   обязательные поля элементов.
 - Правила выдачи: режим «отдельный файл в `bak/`» остаётся по умолчанию,
@@ -81,6 +85,8 @@ intrascada-ui/
 node scripts/list-devices.js --project "<проект>" --folder dg172
 node scripts/validate-container.js "<...>\vc001.json" --project "<проект>"
 node scripts/container-preview.js "<...>\vc001.json" --project "<проект>" --out preview.html
+node scripts/docs.js page button
+node scripts/docs.js search deviceValue
 ```
 
 Скриншот превью 1:1:
